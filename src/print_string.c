@@ -31,15 +31,15 @@ void print_string(va_list args, t_list *guide)
 	char	*src;
 	int		len;
 
-	src = va_arg(args, char *);
-	len = flags_string(ft_strlen(scr, guide));
+	src = va_arg(args, char*);
+	len = flags_string(ft_strlen(scr), guide);
 	if (guide->f_minus == 0)
 		while (guide->spaces-- > 0)
 			ft_putchar_fd(' ', 1);
 	if (guide->f_zero == 1)
 		while (guide->zero-- > 0)
 			ft_putchar_fd('0', 1);
-	while (len-- > 0)
+	while (len-- > 0)//se opcoes anteriores true impreme no fim se nao imprime no comeco e no fim acrecenta espacos se existir
 	{
 		ft_putchar_fd(src, 1);
 		src++;
