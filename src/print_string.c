@@ -48,4 +48,3 @@ void print_string(va_list args, t_list *guide)
 		while (guide->spaces-- > 0)
 			ft_putchar_fd(' ', 1);
 }
-teste
