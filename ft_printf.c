@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdarg.h>
 
 static void init_false(t_guide guide)
 {
@@ -23,6 +22,8 @@ static void init_true(const char *text, va_list args, t_guide *guide)
 	check_flags(format, args, guide);
 	if (tex[guide->i] == 'c')
 		print_char(agrs, guide);
+	if (tex[guide->i] == 's')
+		print_strinh(args, guide)
 	
 }
 

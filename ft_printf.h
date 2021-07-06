@@ -19,6 +19,8 @@ typedef struct s_guide
 {
 	int	i;// contador/movimento de casa
 	int len;
+	int	dot;
+	int precision;
 	int pzero;
 	int pspace;
 	int width;
