@@ -17,8 +17,8 @@
 
 typedef struct s_guide
 {
-	int	i;// contador/movimento de casa
-	int len;
+	int	i;//! not init// contador/movimento de casa
+	int len;//!not init
 	int	dot;
 	int precision;
 	int pzero;

@@ -12,9 +12,15 @@
 
 #include "ft_printf.h"
 
-static void init_false(t_guide guide)
+static void init_false(t_guide *guide)
 {
-	guide.i = 0;
+	guide->dot = 0;
+	guide->precision = 0;
+	guide->pzero = 0;
+	guide->pspace = 0;
+	guide->width = 0;
+	guide->f_minus = 0;
+	guide->f_zero = 0;
 }
 
 static void init_true(const char *text, va_list args, t_guide *guide)
@@ -27,20 +33,21 @@ static void init_true(const char *text, va_list args, t_guide *guide)
 	
 }
 
-int ft_printf(const char *text, ...)
+int	ft_printf(const char *text, ...)
 {
-	t_guide	guide;
 	va_list	args;
+	t_list	guide;
 
-	//!iniciar o guide check()
-	////initguide(&guide);
+	guide.i = 0;
+	guide.len = 0;
+	init_false(&guide);
 	va_start(args, text);
 	while(text[guide.i] != '\0')
 	{
 		if (text[guide.i] == '%')
 		{
 			guide.i++;
-			init(text, args, &guide)//?arrumar
+			init_true(text, args, &guide);
 		}
 		else
 		{
@@ -49,5 +56,4 @@ int ft_printf(const char *text, ...)
 			guide.len++;
 		}
 	}
-	va_end(args);
 }

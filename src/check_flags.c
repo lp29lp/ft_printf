@@ -16,8 +16,8 @@ static void set_minus_zero(const char *text, t_list guide)
 	{//! garanto q se o usuario spammar - ou 0 continue e se comporte corretamente (TESTAR DPS)
 		if (text[guide-> == '-'])
 			guide->f_minus = 1;
-		if (text[guide-> == '0'] && guide->f_minus == 0)//!medida  de seguranca para que se por ventura o - apareca e tenha 0 nao de merda
-			guide-> f_zero = 1;
+		else if (text[guide-> == '0'] && guide->f_minus == 0)//!medida  de seguranca para que se por ventura o - apareca e tenha 0 nao de merda
+			guide->f_zero = 1;
 		guide->i++;
 	}
 }
@@ -73,7 +73,7 @@ static void set_precision(const char *text, va_list args, t_list *guide)
 
 void check_flags(const char *text, va_list args, t_list guide)
 {
-	if (text[guide->i] == '-' || text[guide->i] == '0')//*1ª em ordem
+	if (text[guide->i] == '-' || text[guide->i] == '0')
 		set_minus_zero(text, guide);
 	set_width(text,args, guide)
 	if (text[guide->i] == '.')

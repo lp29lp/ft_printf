@@ -12,16 +12,16 @@
 
 void flags_string(int len, t_list *guide)
 {
-	if (guide->precision > 0 && guide->precision < len)//!precision
-		len = guide->precision; //imprime o tamanho da precição
+	if (guide->precision > 0 && guide->precision < len)
+		len = guide->precision;
 	else if (guide->dot == 1 && guide->precision == 0)
-		len = 0; //imprime nulo
-	if (guide-> width > len && guide->f_zero == 1)//!trata os zeros
-		guide->zero = guide->width - len;//se tem 0 e width maior q o tamanho preenche com 0 os primeiros campos
+		len = 0;
+	if (guide-> width > len && guide->f_zero == 1)
+		guide->pzero = guide->width - len;
 	else
-		guide->zero = 0;//se a opção acima nao for true o zero(quantidade de zero) tem q ser 0 no fim ele nao consegue preencher os campos pq n tem tamanho suficiente
-	if (guide->width > len && guide->f_zero == 0)//!spaces
-		guide->spaces = guide->width - len;
+		guide->pzero = 0;
+	if (guide->width > len && guide->f_zero == 0)
+		guide->pspaces = guide->width - len;
 	guide->count += len + guide-> zero + guide->spaces; 
 	return (len);
 }
@@ -39,7 +39,7 @@ void print_string(va_list args, t_list *guide)
 	if (guide->f_zero == 1)
 		while (guide->zero-- > 0)
 			ft_putchar_fd('0', 1);
-	while (len-- > 0)//se opcoes anteriores true impreme no fim se nao imprime no comeco e no fim acrecenta espacos se existir
+	while (len-- > 0)
 	{
 		ft_putchar_fd(src, 1);
 		src++;
