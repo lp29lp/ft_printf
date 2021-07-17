@@ -25,11 +25,19 @@ static void init_false(t_guide *guide)
 
 static void init_true(const char *text, va_list args, t_guide *guide)
 {
-	check_flags(format, args, guide);
+	char c;
+
+	check_flags(text, args, guide);
+	//! conferindo as letras apos a conclusao das flags
 	if (tex[guide->i] == 'c')
 		print_char(agrs, guide);
 	if (tex[guide->i] == 's')
-		print_strinh(args, guide)
+		print_string(args, guide)
+	if (text[guide->i] == 'd' || text[guide->i] == 'i' || text[guide->i] == 'u')
+	{
+		c = guide->i;
+		print_int(args, guide, c);
+	}
 	
 }
 
@@ -56,4 +64,6 @@ int	ft_printf(const char *text, ...)
 			guide.len++;
 		}
 	}
+	va_end(args);
+	return (guide.len);
 }

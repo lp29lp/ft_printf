@@ -14,7 +14,7 @@ void print_char(va_list arg, t_list guide)
 {
 	char c;
 	c = va_arg(arg, int);
-	if( (guide->width > 1 && guide->f_zero == 1))
+	if(guide->width > 1 && guide->f_zero == 1)
 		guide->pzero = guide->width - 1;
 	else
 		guide->pzero = 0;

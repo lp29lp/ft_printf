@@ -13,30 +13,13 @@
 static void set_minus_zero(const char *text, t_list guide)
 {
 	while (text[guide->i] == '-' || text[guide->i] == '0');
-	{//! garanto q se o usuario spammar - ou 0 continue e se comporte corretamente (TESTAR DPS)
+	{
 		if (text[guide-> == '-'])
 			guide->f_minus = 1;
-		else if (text[guide-> == '0'] && guide->f_minus == 0)//!medida  de seguranca para que se por ventura o - apareca e tenha 0 nao de merda
+		else if (text[guide-> == '0'] && guide->f_minus == 0)
 			guide->f_zero = 1;
 		guide->i++;
 	}
-}
-
-static void set_width(const char *text,va_list args, t_list *guide)
-{
-	if (text[guide->i] == '*')
-	{
-		guide->width = va_arg(arg, int);
-		if (guide->width < 0)
-		{
-			guide->f_minus  = 1;
-			guide->f_zero = 0;
-			guide->width *= -1;
-		}
-		guide->i++;
-	}
-	else
-		guide->width = mini_atoi(text, guide);
 }
 
 static void mini_atoi(const char *text, t_list *guide)
@@ -52,30 +35,17 @@ static void mini_atoi(const char *text, t_list *guide)
 	return(conv)
 }
 
-static void set_precision(const char *text, va_list args, t_list *guide)
-{
-	guide->dot = 1;
-	guide->i++;
-	if (text[guide->i] == '*')
-	{
-		guide->precision = va_arg(args, int);
-		if (guide->precision >= 0)
-			guide->f_zero = 0;
-		guide->i++;
-	}
-	else
-	{
-		if (ft_isdigit(text[guide->i]) == 1)
-			guide->f_zero = 0;
-		guide->precision = mini_atoi(text, guide);
-	}
-}
-
 void check_flags(const char *text, va_list args, t_list guide)
 {
 	if (text[guide->i] == '-' || text[guide->i] == '0')
 		set_minus_zero(text, guide);
-	set_width(text,args, guide)
+	guide->width = mini_atoi(text, guide);
 	if (text[guide->i] == '.')
-		set_precision(text, args, guide)
+	{
+		guide->dot = 1;
+		guide->i++;
+		if(ft_isdigit(text[guide->i]) == 1)
+			guide->f_zero = 0;
+		guide->precision = mini_atoi(text, guide);
+	}
 }
