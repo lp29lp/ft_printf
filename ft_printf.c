@@ -38,7 +38,11 @@ static void init_true(const char *text, va_list args, t_guide *guide)
 		c = guide->i;
 		print_int(args, guide, c);
 	}
-	
+	if (text[guide->i] == 'x' || text[guide->i] == 'X')
+	{
+		c = guide->i;
+		print_x(args, guide, c);
+	}
 }
 
 int	ft_printf(const char *text, ...)
