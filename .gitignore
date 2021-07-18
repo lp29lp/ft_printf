@@ -1,4 +1,4 @@
 .gitignore
 commit.sh
-.txt
+*.txt
 testes
