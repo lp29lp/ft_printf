@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void print_char(va_list arg, t_list guide)
+void print_char(va_list arg, t_guide guide)
 {
 	char c;
 	c = va_arg(arg, int);

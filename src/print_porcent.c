@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void print_porcent(va_list args, t_list *guide)
+void print_porcent(va_list args, t_guide *guide)
 {
 	if (guide->width > 1 && guide->f_zerop)
 		guide->pzero = guide->width - 1;
@@ -21,7 +21,7 @@ void print_porcent(va_list args, t_list *guide)
 	else
 		guide->pspace = 0;
 	guide->len += guide->pzero + guide->pspace + 1;
-	if (!guide->fl_minus)
+	if (!guide->f_minus)
 		while (guide->pspace-- > 0)
 			ft_putchar_fd(' ', 1);
 	if (guide->f_zerop)

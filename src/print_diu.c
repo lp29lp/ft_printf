@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-static void	flags_int(t_list *guide, unsigned long int size)
+static void	flags_int(t_guide *guide, unsigned long int size)
 static int check_sign(va_list *guide, unsigned long int num, char c)
 
-void	print_diu(va_list args, t_list *guide, char c)
+void	print_diu(va_list args, t_guide *guide, char c)
 {
 	unsigned long int num;
 	unsigned long int size;
@@ -25,7 +25,7 @@ void	print_diu(va_list args, t_list *guide, char c)
 	size = ft_strlen(src);
 	flags_int(guide, size);
 	if (guide->f_minus == 0)
-		while (guide->pspaces-- > 0)
+		while (guide->pspace-- > 0)
 			ft_putchar_fd(' ', 1);
 	if ((guide->f_zero == 1) || (!guide->f_zero) || (guide->precision > size))
 	{
@@ -37,31 +37,31 @@ void	print_diu(va_list args, t_list *guide, char c)
 			src++;
 		}
 		if (guide->f_minus == 1)
-			while (guide->pspaces-- > 0)
+			while (guide->pspace-- > 0)
 				ft_putchar_fd(' ', 1);
 	}
 }
 
-static void	flags_int(t_list *guide, unsigned long int size)
+static void	flags_int(t_guide *guide, unsigned long int size)
 {
 	if (guide->precision > 1 && guide->width > 1)
 	{
 		if (guide->width > guide->precision && guide->precision > size)
 		{
 			guide->pzero = guide->precision - size;
-			guide->pspaces = guide->width - pzero;
+			guide->pspace = guide->width - pzero;
 		}
 		else if (guide->width < guide->precision && guide->precision > size)
 			guide->pzero = guide->precision - size;
-		guide->len += size + guide->pzero + guide->pspaces;
+		guide->len += size + guide->pzero + guide->pspace;
 	}
 	if (guide->width > size && guide->f_zero == 1)
 		guide->pzero = guide->width - size;
 	else
 		guide->pzero = 0;
 	if (guide->width > size && guide->f_zero == 0)
-		guide->pspaces = guide->width - size;
-	guide->len += size + guide->pzero + guide->pspaces;
+		guide->pspace = guide->width - size;
+	guide->len += size + guide->pzero + guide->pspace;
 }
 
 static int check_sign(va_list *guide, unsigned long int num, char c)

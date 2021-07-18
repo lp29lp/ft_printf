@@ -23,7 +23,7 @@ void	print_p(va_list ap, t_guide *guide)
 	num = va_arg(ap, unsigned long int);
 	size = flags_p(num, guide, check_size(num))
 	if (!guide->fl_minus)
-		while (guide->space-- > 0)
+		while (guide->pspace-- > 0)
 			ft_putchar_fd(' ', 1);
 	ft_putstr_fd("0x", 1);
 	while (guide->precision-- > 0)
@@ -31,7 +31,7 @@ void	print_p(va_list ap, t_guide *guide)
 	if (size > 2)
 		coprih(num);
 	if (guide->fl_minus)
-		while (guide->space-- > 0)
+		while (guide->pspace-- > 0)
 			ft_putchar_fd(' ', 1);
 }
 
@@ -46,8 +46,8 @@ static int	flags_p(unsigned long int num, t_guide *guide, int size)
 	else
 		size += 2;
 	if (guide->wd > size)
-		guide->space = guide->wd - size;
-	guide->len += guide->space + size + guide->precision;
+		guide->pspace = guide->wd - size;
+	guide->len += guide->pspace + size + guide->precision;
 	return (size);
 }
 

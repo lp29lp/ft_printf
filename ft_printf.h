@@ -28,6 +28,7 @@ typedef struct s_guide
 	int width;
 	int f_minus;
 	int f_zero;
+	int f_zerop;
 }	t_guide;
 
 

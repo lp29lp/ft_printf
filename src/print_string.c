@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-static int flags_string(int size, t_list *guide)
+static int flags_string(int size, t_guide *guide)
 
-void	print_string(va_list args, t_list *guide)
+void	print_string(va_list args, t_guide *guide)
 {
 	char	*src;
 	int		size;
@@ -20,7 +20,7 @@ void	print_string(va_list args, t_list *guide)
 	src = va_arg(args, char*);
 	size = flags_string(ft_strlen(scr), guide);
 	if (guide->f_minus == 0)
-		while (guide->pspaces-- > 0)
+		while (guide->pspace-- > 0)
 			ft_putchar_fd(' ', 1);
 	if (guide->f_zero == 1)
 		while (guide->pzero-- > 0)
@@ -31,11 +31,11 @@ void	print_string(va_list args, t_list *guide)
 		src++;
 	}
 	if (guide->f_minus == 1)
-		while (guide->pspaces-- > 0)
+		while (guide->pspace-- > 0)
 			ft_putchar_fd(' ', 1);
 }
 
-static int flags_string(int size, t_list *guide)
+static int flags_string(int size, t_guide *guide)
 {
 	if (guide->precision > 0 && guide->precision < size)
 		size = guide->precision;
@@ -46,7 +46,7 @@ static int flags_string(int size, t_list *guide)
 	else
 		guide->pzero = 0;
 	if (guide->width > size && guide->f_zero == 0)
-		guide->pspaces = guide->width - size;
+		guide->pspace = guide->width - size;
 	guide->len += size + guide->zero + guide->spaces; 
 	return (size);
 }
