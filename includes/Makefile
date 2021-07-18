@@ -6,9 +6,11 @@
 #    By: lpaulo-d <lpaulo-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/01 15:06:48 by lpaulo-d          #+#    #+#              #
-#    Updated: 2021/07/18 02:30:36 by lpaulo-d         ###   ########.fr        #
+#    Updated: 2021/07/18 17:25:15 by lpaulo-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+#! in test 
 
 FILES = ft_isdigit.c ft_itoa.c ft_putchar_fd.c ft_putstr_fd.c ft_strlen.c
 SRC = $(FILES:.c=.o)

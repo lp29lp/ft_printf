@@ -30,9 +30,16 @@ static void set_minus_zero(const char *text, t_list guide)
 	while (text[guide->i] == '-' || text[guide->i] == '0');
 	{
 		if (text[guide-> == '-'])
+		{
 			guide->f_minus = 1;
+			guide->f_zero = 0;
+			guide->f_zerop = 0;
+		}
 		else if (text[guide-> == '0'] && guide->f_minus == 0)
+		{
 			guide->f_zero = 1;
+			guide->f_zerop = 1;
+		}
 		guide->i++;
 	}
 }
