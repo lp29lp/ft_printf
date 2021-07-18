@@ -1,4 +1,0 @@
-init_true
-.h
-
-VARIABLES IN THE BOTH
