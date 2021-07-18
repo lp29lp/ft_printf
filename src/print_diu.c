@@ -10,40 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	flags_int(t_list *guide, unsigned long int len)
-{
-	if (guide->precision > 1 && guide->width > 1)
-	{
-		if (guide->width > guide->precision && guide->precision > len)
-		{
-			guide->pzero = guide->precision - len;
-			guide->pspaces = guide->width - pzero;
-		}
-		else if (guide->width < guide->precision && guide->precision > len)
-			guide->pzero = guide->precision - len;
-		guide->count += len + guide->pzero + guide->pspaces;
-
-	}
-	if (guide->width > len && guide->f_zero == 1)
-		guide->pzero = guide->width - len;
-	else
-		guide->pzero = 0;
-	if (guide->width > len && guide->f_zero == 0)
-		guide->pspaces = guide->width - len;
-	guide->count += len + guide->pzero + guide->pspaces;
-}
-
-unsigned long int check_sign(va_list *guide, unsigned long int num, char c)
-{
-	if (num < 0 && c == 'd' || c == 'i')
-	{
-		write(1, '-', 1);
-		num *= -1;
-		return (num)
-	}
-	//?if (num < 0 && c == 'u')
-	//?	return (void);
-}
+static void	flags_int(t_list *guide, unsigned long int size)
+static int check_sign(va_list *guide, unsigned long int num, char c)
 
 void	print_diu(va_list args, t_list *guide, char c)
 {
@@ -72,4 +40,39 @@ void	print_diu(va_list args, t_list *guide, char c)
 			while (guide->pspaces-- > 0)
 				ft_putchar_fd(' ', 1);
 	}
+}
+
+static void	flags_int(t_list *guide, unsigned long int size)
+{
+	if (guide->precision > 1 && guide->width > 1)
+	{
+		if (guide->width > guide->precision && guide->precision > size)
+		{
+			guide->pzero = guide->precision - size;
+			guide->pspaces = guide->width - pzero;
+		}
+		else if (guide->width < guide->precision && guide->precision > size)
+			guide->pzero = guide->precision - size;
+		guide->len += size + guide->pzero + guide->pspaces;
+	}
+	if (guide->width > size && guide->f_zero == 1)
+		guide->pzero = guide->width - size;
+	else
+		guide->pzero = 0;
+	if (guide->width > size && guide->f_zero == 0)
+		guide->pspaces = guide->width - size;
+	guide->len += size + guide->pzero + guide->pspaces;
+}
+
+static int check_sign(va_list *guide, unsigned long int num, char c)
+{
+	if (num < 0 && c == 'd' || c == 'i')
+	{
+		write(1, '-', 1);
+		num *= -1;
+		return (num)
+		guide->len += 1;
+	}
+	//?if (num < 0 && c == 'u')
+	//?	return (void);
 }

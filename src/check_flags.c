@@ -10,6 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+void check_flags(const char *text, va_list args, t_list guide)
+{
+	if (text[guide->i] == '-' || text[guide->i] == '0')
+		set_minus_zero(text, guide);
+	guide->width = mini_atoi(text, guide);
+	if (text[guide->i] == '.')
+	{
+		guide->dot = 1;
+		guide->i++;
+		if(ft_isdigit(text[guide->i]) == 1)
+			guide->f_zero = 0;
+		guide->precision = mini_atoi(text, guide);
+	}
+}
+
 static void set_minus_zero(const char *text, t_list guide)
 {
 	while (text[guide->i] == '-' || text[guide->i] == '0');
@@ -33,19 +48,4 @@ static void mini_atoi(const char *text, t_list *guide)
 		guide->i++;
 	}
 	return(conv)
-}
-
-void check_flags(const char *text, va_list args, t_list guide)
-{
-	if (text[guide->i] == '-' || text[guide->i] == '0')
-		set_minus_zero(text, guide);
-	guide->width = mini_atoi(text, guide);
-	if (text[guide->i] == '.')
-	{
-		guide->dot = 1;
-		guide->i++;
-		if(ft_isdigit(text[guide->i]) == 1)
-			guide->f_zero = 0;
-		guide->precision = mini_atoi(text, guide);
-	}
 }

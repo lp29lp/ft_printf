@@ -10,36 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int flags_string(int len, t_list *guide)
-{
-	if (guide->precision > 0 && guide->precision < len)
-		len = guide->precision;
-	else if (guide->dot == 1 && guide->precision == 0)
-		len = 0;
-	if (guide->width > len && guide->f_zero == 1)
-		guide->pzero = guide->width - len;
-	else
-		guide->pzero = 0;
-	if (guide->width > len && guide->f_zero == 0)
-		guide->pspaces = guide->width - len;
-	guide->count += len + guide->zero + guide->spaces; 
-	return (len);
-}
+static int flags_string(int size, t_list *guide)
 
-void print_string(va_list args, t_list *guide)
+void	print_string(va_list args, t_list *guide)
 {
 	char	*src;
-	int		len;
+	int		size;
 
 	src = va_arg(args, char*);
-	len = flags_string(ft_strlen(scr), guide);
+	size = flags_string(ft_strlen(scr), guide);
 	if (guide->f_minus == 0)
 		while (guide->pspaces-- > 0)
 			ft_putchar_fd(' ', 1);
 	if (guide->f_zero == 1)
 		while (guide->pzero-- > 0)
 			ft_putchar_fd('0', 1);
-	while (len-- > 0)
+	while (size-- > 0)
 	{
 		ft_putchar_fd(*src, 1);
 		src++;
@@ -48,3 +34,20 @@ void print_string(va_list args, t_list *guide)
 		while (guide->pspaces-- > 0)
 			ft_putchar_fd(' ', 1);
 }
+
+static int flags_string(int size, t_list *guide)
+{
+	if (guide->precision > 0 && guide->precision < size)
+		size = guide->precision;
+	else if (guide->dot == 1 && guide->precision == 0)
+		size = 0;
+	if (guide->width > size && guide->f_zero == 1)
+		guide->pzero = guide->width - size;
+	else
+		guide->pzero = 0;
+	if (guide->width > size && guide->f_zero == 0)
+		guide->pspaces = guide->width - size;
+	guide->len += size + guide->zero + guide->spaces; 
+	return (size);
+}
+

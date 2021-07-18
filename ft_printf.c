@@ -28,21 +28,30 @@ static void init_true(const char *text, va_list args, t_guide *guide)
 	char c;
 
 	check_flags(text, args, guide);
-	//! conferindo as letras apos a conclusao das flags
 	if (tex[guide->i] == 'c')
 		print_char(agrs, guide);
-	if (tex[guide->i] == 's')
+	else if (tex[guide->i] == 's')
 		print_string(args, guide)
-	if (text[guide->i] == 'd' || text[guide->i] == 'i' || text[guide->i] == 'u')
+	else if (text[guide->i] == 'd' || text[guide->i] == 'i' || text[guide->i] == 'u')
 	{
 		c = guide->i;
 		print_int(args, guide, c);
 	}
-	if (text[guide->i] == 'x' || text[guide->i] == 'X')
+	else if (text[guide->i] == 'x' || text[guide->i] == 'X')
 	{
 		c = guide->i;
 		print_x(args, guide, c);
 	}
+	else if (text[guide->i] == 'p')
+		print_p(args, guide);
+	else
+	{
+		ft_putchar_fd('%', 1);
+		//!guide->i--;
+		guide->len++;
+	}
+	guide->i++;
+	init_false(guide);
 }
 
 int	ft_printf(const char *text, ...)
