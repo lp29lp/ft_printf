@@ -12,8 +12,8 @@
 
 #include "../ft_printf.h"
 
-static void set_minus_zero(const char *text, t_guide *guide)
-static void mini_atoi(const char *text, t_guide *guide)
+static void set_minus_zero(const char *text, t_guide *guide);
+static int mini_atoi(const char *text, t_guide *guide);
 
 void check_flags(const char *text, va_list args, t_guide *guide)
 {
@@ -32,15 +32,15 @@ void check_flags(const char *text, va_list args, t_guide *guide)
 
 static void set_minus_zero(const char *text, t_guide *guide)
 {
-	while (text[guide->i] == '-' || text[guide->i] == '0');
+	while (text[guide->i] == '-' || text[guide->i] == '0')
 	{
-		if (text[guide-> == '-'])
+		if (text[guide->i == '-'])
 		{
 			guide->f_minus = 1;
 			guide->f_zero = 0;
 			guide->f_zerop = 0;
 		}
-		else if (text[guide-> == '0'] && guide->f_minus == 0)
+		else if (text[guide->i == '0'] && guide->f_minus == 0)
 		{
 			guide->f_zero = 1;
 			guide->f_zerop = 1;
@@ -49,7 +49,7 @@ static void set_minus_zero(const char *text, t_guide *guide)
 	}
 }
 
-static void mini_atoi(const char *text, t_guide *guide)
+static int mini_atoi(const char *text, t_guide *guide)
 {
 	int conv;
 
@@ -59,5 +59,5 @@ static void mini_atoi(const char *text, t_guide *guide)
 		conv *= 10 + (text[guide->i] - '0');
 		guide->i++;
 	}
-	return(conv)
+	return(conv);
 }

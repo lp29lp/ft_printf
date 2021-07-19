@@ -33,7 +33,8 @@ int	ft_printf(const char *text, ...)
 		}
 		else
 		{
-			write (1, text[guide.i], 1);
+			//write (1, text[guide.i], 1);
+			ft_putchar_fd(text[guide.i], 1);
 			guide.i++;
 			guide.len++;
 		}
@@ -59,14 +60,14 @@ static void init_true(const char *text, va_list args, t_guide *guide)
 	char c;
 
 	check_flags(text, args, guide);
-	if (tex[guide->i] == 'c')
-		print_char(agrs, guide);
-	else if (tex[guide->i] == 's')
-		print_string(args, guide)
+	if (text[guide->i] == 'c')
+		print_char(args, guide);
+	else if (text[guide->i] == 's')
+		print_string(args, guide);
 	else if (text[guide->i] == 'd' || text[guide->i] == 'i' || text[guide->i] == 'u')
 	{
 		c = guide->i;
-		print_int(args, guide, c);
+		print_diu(args, guide, c);
 	}
 	else if (text[guide->i] == 'x' || text[guide->i] == 'X')
 	{
