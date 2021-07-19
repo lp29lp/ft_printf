@@ -28,7 +28,7 @@ RE = rm -f
 all: $(NAME)
 
 $(NAME): $(SRC)
-	ar -rcs $(NAME) $(src)
+	ar -rcs $(NAME) $(SRC)
 
 $(SRC_PATH)/%.o: %.c
 	$(CC) $(CCFLAGS) -I . -c $< -o $@
