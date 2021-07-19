@@ -24,6 +24,8 @@ void	print_diu(va_list args, t_guide *guide)
 	num = va_arg(args, int);
 	num = check_sign(guide, num);
 	src = ft_itoa(num);
+	if (src == NULL)
+		return ;
 	size = ft_strlen(src);
 	flags_int(guide, size);
 	if (guide->f_minus == 0)
