@@ -6,7 +6,7 @@
 /*   By: lpaulo-d <lpaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 19:33:19 by lpaulo-d          #+#    #+#             */
-/*   Updated: 2021/07/19 01:16:49 by lpaulo-d         ###   ########.fr       */
+/*   Updated: 2021/07/19 15:21:50 by lpaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,6 @@ char	*ft_itoa(int n)
 	size = 1;
 	while (n / 10 != 0 && size++)
 		n /= 10;
-	conv = malloc(sizeof(char) * (size + sign + 1));
-	if (!conv)
-		return (NULL);
 	conv[size + sign] = '\0';
 	while (size-- != 0)
 	{
