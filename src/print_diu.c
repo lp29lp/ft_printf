@@ -42,6 +42,7 @@ void	print_diu(va_list args, t_guide *guide)
 			while (guide->pspace-- > 0)
 				ft_putchar_fd(' ', 1);
 	}
+	free(src);
 }
 
 static void	flags_int(t_guide *guide, int size)
@@ -68,6 +69,7 @@ static void	flags_int(t_guide *guide, int size)
 
 static int check_sign(t_guide *guide, unsigned long int num)
 {
+	free
 	//if (num < 0 && c == 'd' || c == 'i')
 	ft_putchar_fd('-', 1);
 	num *= -1;
