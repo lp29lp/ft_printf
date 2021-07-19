@@ -69,17 +69,16 @@ static void	flags_int(t_guide *guide, int size)
 
 static int check_sign(t_guide *guide, unsigned long int num)
 {
-	if (num < 0 && guide->i == 'u')
-	{
-		num *= -1;
-		return (num);
-	}
-	else
+	if (num < 0 && guide->i == 'd' || num < 0 && guide->i == 'i')
 	{
 		ft_putchar_fd('-', 1);
 		num *= -1;
 		guide->len += 1;
 		return (num);
 	}
-
+	else
+	{
+		num *= -1;
+		return (num);
+	}
 }
