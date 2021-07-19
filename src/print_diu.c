@@ -6,7 +6,7 @@
 /*   By: lpaulo-d <lpaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 18:25:09 by lpaulo-d          #+#    #+#             */
-/*   Updated: 2021/07/15 18:25:09 by lpaulo-d         ###   ########.fr       */
+/*   Updated: 2021/07/19 16:22:35 by lpaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	print_diu(va_list args, t_guide *guide)
 	unsigned long int num;
 	int size;
 	char *src;
+	int count = 0;
 
 	num = va_arg(args, int);
 	num = check_sign(guide, num);
@@ -36,15 +37,12 @@ void	print_diu(va_list args, t_guide *guide)
 		while (guide->pzero-- > 0)
 			ft_putchar_fd('0', 1);
 		while (size-- > 0)
-		{
-			ft_putchar_fd(*src, 1);
-			src++;
-		}
+			write(1, &src[count++], 1);
 		if (guide->f_minus == 1)
 			while (guide->pspace-- > 0)
 				ft_putchar_fd(' ', 1);
 	}
-	free(src);
+	free (src);
 }
 
 static void	flags_int(t_guide *guide, int size)
