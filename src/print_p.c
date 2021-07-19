@@ -10,19 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-static char	coprih(unsigned long int num)
-static int	flags_p(unsigned long int num, t_guide *guide, int size)
-static void	check_size(unsigned long int num)
+#include "../ft_printf.h"
+
+static char	coprih(unsigned int num);
+static int	flags_p(unsigned int num, t_guide *guide, int size);
+static int	check_size(unsigned int num);
 
 
-void	print_p(va_list ap, t_guide *guide)
+void	print_p(va_list args, t_guide *guide)
 {
-	unsigned long int	num;
+	unsigned int	num;
 	int					size;
 
-	num = va_arg(ap, unsigned long int);
-	size = flags_p(num, guide, check_size(num))
-	if (!guide->fl_minus)
+	num = va_arg(args, unsigned int);
+	size = flags_p(num, guide, check_size(num));
+	if (!guide->f_minus)
 		while (guide->pspace-- > 0)
 			ft_putchar_fd(' ', 1);
 	ft_putstr_fd("0x", 1);
@@ -30,12 +32,12 @@ void	print_p(va_list ap, t_guide *guide)
 		ft_putchar_fd('0', 1);
 	if (size > 2)
 		coprih(num);
-	if (guide->fl_minus)
+	if (guide->f_minus)
 		while (guide->pspace-- > 0)
 			ft_putchar_fd(' ', 1);
 }
 
-static int	flags_p(unsigned long int num, t_guide *guide, int size)
+static int	flags_p(unsigned int num, t_guide *guide, int size)
 {
 	if (guide->precision > size)
 		guide->precision = guide->precision - size;
@@ -45,16 +47,16 @@ static int	flags_p(unsigned long int num, t_guide *guide, int size)
 		size = 2;
 	else
 		size += 2;
-	if (guide->wd > size)
-		guide->pspace = guide->wd - size;
+	if (guide->width > size)
+		guide->pspace = guide->width - size;
 	guide->len += guide->pspace + size + guide->precision;
 	return (size);
 }
 
 
-static char	coprih(unsigned long int num)
+static char	coprih(unsigned int num)
 {
-	unsigned long int base;
+	unsigned int base;
 	char *info_base;
 
 	base = 16;
@@ -64,9 +66,9 @@ static char	coprih(unsigned long int num)
 	ft_putchar_fd(info_base[num % base], 1);
 }
 
-static void	check_size(unsigned long int num)
+static int	check_size(unsigned int num)
 {
-	unsigned long int size;
+	unsigned int size;
 
 	size = 0;
 	if (num == 1)

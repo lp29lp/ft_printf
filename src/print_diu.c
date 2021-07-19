@@ -10,17 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-static void	flags_int(t_guide *guide, unsigned long int size)
-static int check_sign(va_list *guide, unsigned long int num, char c)
+#include "../ft_printf.h"
+
+static void	flags_int(t_guide *guide, unsigned long int size);
+static int check_sign(t_guide *guide, unsigned long int num, char c);
 
 void	print_diu(va_list args, t_guide *guide, char c)
 {
 	unsigned long int num;
 	unsigned long int size;
-	char src;
+	char *src;
 
 	num = va_arg(args, int);
-	num = check_sign(guide, num, c)
+	num = check_sign(guide, num, c);
 	src = ft_itoa(num);
 	size = ft_strlen(src);
 	flags_int(guide, size);
@@ -49,7 +51,7 @@ static void	flags_int(t_guide *guide, unsigned long int size)
 		if (guide->width > guide->precision && guide->precision > size)
 		{
 			guide->pzero = guide->precision - size;
-			guide->pspace = guide->width - pzero;
+			guide->pspace = guide->width - guide->pzero;
 		}
 		else if (guide->width < guide->precision && guide->precision > size)
 			guide->pzero = guide->precision - size;
@@ -64,15 +66,14 @@ static void	flags_int(t_guide *guide, unsigned long int size)
 	guide->len += size + guide->pzero + guide->pspace;
 }
 
-static int check_sign(va_list *guide, unsigned long int num, char c)
+static int check_sign(t_guide *guide, unsigned long int num, char c)
 {
-	if (num < 0 && c == 'd' || c == 'i')
-	{
-		write(1, '-', 1);
-		num *= -1;
-		return (num)
-		guide->len += 1;
-	}
+	//if (num < 0 && c == 'd' || c == 'i')
+	ft_putchar_fd('-', 1);
+	num *= -1;
+	return (num);
+	guide->len += 1;
+
 	//?if (num < 0 && c == 'u')
 	//?	return (void);
 }

@@ -12,6 +12,36 @@
 
 #include "ft_printf.h"
 
+static void init_true(const char *text, va_list args, t_guide *guide);
+static void init_false(t_guide *guide);
+
+int	ft_printf(const char *text, ...)
+{
+	va_list	args;
+	t_guide	guide;
+
+	guide.i = 0;
+	guide.len = 0;
+	init_false(&guide);
+	va_start(args, text);
+	while(text[guide.i] != '\0')
+	{
+		if (text[guide.i] == '%')
+		{
+			guide.i++;
+			init_true(text, args, &guide);
+		}
+		else
+		{
+			write (1, text[guide.i], 1);
+			guide.i++;
+			guide.len++;
+		}
+	}
+	va_end(args);
+	return (guide.len);
+}
+
 static void init_false(t_guide *guide)
 {
 	guide->dot = 0;
@@ -53,31 +83,4 @@ static void init_true(const char *text, va_list args, t_guide *guide)
 	}
 	guide->i++;
 	init_false(guide);
-}
-
-int	ft_printf(const char *text, ...)
-{
-	va_list	args;
-	t_list	guide;
-
-	guide.i = 0;
-	guide.len = 0;
-	init_false(&guide);
-	va_start(args, text);
-	while(text[guide.i] != '\0')
-	{
-		if (text[guide.i] == '%')
-		{
-			guide.i++;
-			init_true(text, args, &guide);
-		}
-		else
-		{
-			write (1, text[guide.i], 1);
-			guide.i++;
-			guide.len++;
-		}
-	}
-	va_end(args);
-	return (guide.len);
 }

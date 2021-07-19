@@ -10,7 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void check_flags(const char *text, va_list args, t_guide guide)
+#include "../ft_printf.h"
+
+static void set_minus_zero(const char *text, t_guide *guide)
+static void mini_atoi(const char *text, t_guide *guide)
+
+void check_flags(const char *text, va_list args, t_guide *guide)
 {
 	if (text[guide->i] == '-' || text[guide->i] == '0')
 		set_minus_zero(text, guide);
@@ -25,7 +30,7 @@ void check_flags(const char *text, va_list args, t_guide guide)
 	}
 }
 
-static void set_minus_zero(const char *text, t_guide guide)
+static void set_minus_zero(const char *text, t_guide *guide)
 {
 	while (text[guide->i] == '-' || text[guide->i] == '0');
 	{

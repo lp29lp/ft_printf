@@ -6,11 +6,11 @@
 /*   By: lpaulo-d <lpaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 16:50:40 by lpaulo-d          #+#    #+#             */
-/*   Updated: 2021/07/18 02:28:11 by lpaulo-d         ###   ########.fr       */
+/*   Updated: 2021/07/19 01:16:47 by lpaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
 int	ft_isdigit(int c)
 {

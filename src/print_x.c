@@ -10,17 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-static char	coprih(unsigned long int num,char c);
-static void	flags_x(va_list args, t_guide *guide, unsigned long int size);
-static void	check_size(unsigned long int num);
+#include "../ft_printf.h"
+
+static char	coprih(unsigned int num,char c);
+static void	flags_x(va_list args, t_guide *guide, unsigned int size);
+static int	check_size(unsigned int num);
 
 void	print_x(va_list args, t_guide *guide, char c)
 {
-	unsigned long int num;
-	unsigned long int size;
+	unsigned int num;
+	unsigned int size;
 	char conv;
 
-	num = (args, unsigned long int);
+	num = va_arg(args, unsigned int);
 	size = check_size(num);
 	flags_x(args, guide, size);
 	if (guide->f_minus == 0)
@@ -37,9 +39,9 @@ void	print_x(va_list args, t_guide *guide, char c)
 	}
 }
 
-static char	coprih(unsigned long int num,char c)
+static char	coprih(unsigned int num,char c)
 {
-	unsigned long int base;
+	unsigned int base;
 	char *info_base;
 
 	base = 16;
@@ -47,26 +49,26 @@ static char	coprih(unsigned long int num,char c)
 	{
 		info_base = "0123456789abcdef";
 		if (num / base > 0)
-			coprih(num / base);
+			coprih(num / base, c);
 		ft_putchar_fd(info_base[num % base], 1);
 	}
 	else
 	{
 		info_base = "0123456789ABCDEF";
 		if (num /= base > 0)
-			coprih(num / base);
+			coprih(num / base, c);
 		ft_putchar_fd(info_base[num % base], 1);
 	}
 }
 
-static void	flags_x(va_list args, t_guide *guide, unsigned long int size)
+static void	flags_x(va_list args, t_guide *guide, unsigned int size)
 {
 	if (guide->precision > 1 && guide->width > 1)
 	{
 		if (guide->width > guide->precision && guide->precision > size)
 		{
 			guide->pzero = guide->precision - size;
-			guide->pspace = guide->width - pzero;
+			guide->pspace = guide->width - guide->pzero;
 		}
 		else if (guide->width < guide->precision && guide->precision > size)
 			guide->pzero = guide->precision - size;
@@ -82,9 +84,9 @@ static void	flags_x(va_list args, t_guide *guide, unsigned long int size)
 	guide->len += size + guide->pzero + guide->pspace;
 }
 
-static void	check_size(unsigned long int num)
+static int	check_size(unsigned int num)
 {
-	unsigned long int size;
+	unsigned int size;
 
 	size = 0;
 	if (num == 1)

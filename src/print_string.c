@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-static int flags_string(int size, t_guide *guide)
+#include "../ft_printf.h"
+
+static int flags_string(int size, t_guide *guide);
 
 void	print_string(va_list args, t_guide *guide)
 {
@@ -18,7 +20,7 @@ void	print_string(va_list args, t_guide *guide)
 	int		size;
 
 	src = va_arg(args, char*);
-	size = flags_string(ft_strlen(scr), guide);
+	size = flags_string(ft_strlen(src), guide);
 	if (guide->f_minus == 0)
 		while (guide->pspace-- > 0)
 			ft_putchar_fd(' ', 1);
@@ -47,7 +49,6 @@ static int flags_string(int size, t_guide *guide)
 		guide->pzero = 0;
 	if (guide->width > size && guide->f_zero == 0)
 		guide->pspace = guide->width - size;
-	guide->len += size + guide->zero + guide->spaces; 
+	guide->len += size + guide->pzero + guide->pspace; 
 	return (size);
 }
-

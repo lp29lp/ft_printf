@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../ft_printf.h"
+
 void print_porcent(va_list args, t_guide *guide)
 {
 	if (guide->width > 1 && guide->f_zerop)

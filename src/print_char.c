@@ -10,10 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void print_char(va_list arg, t_guide guide)
+#include "../ft_printf.h"
+
+void print_char(va_list args, t_guide *guide)
 {
 	char c;
-	c = va_arg(arg, int);
+	c = va_arg(args, int);
 	if(guide->width > 1 && guide->f_zero == 1)
 		guide->pzero = guide->width - 1;
 	else
