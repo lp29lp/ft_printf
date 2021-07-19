@@ -18,29 +18,33 @@ static void init_false(t_guide *guide);
 int	ft_printf(const char *text, ...)
 {
 	va_list	args;
-	t_guide	guide;
+	t_guide	*guide;
+	int ret;
 
-	guide.i = 0;
-	guide.len = 0;
-	init_false(&guide);
+	guide = (t_guide *)malloc(sizeof(t_guide));
+	guide->i = 0;
+	guide->len = 0;
+	init_false(guide);
 	va_start(args, text);
-	while(text[guide.i] != '\0')
+	while(text[guide->i] != '\0')
 	{
-		if (text[guide.i] == '%')
+		if (text[guide->i] == '%')
 		{
-			guide.i++;
-			init_true(text, args, &guide);
+			guide->i++;
+			init_true(text, args, guide);
 		}
 		else
 		{
-			//write (1, text[guide.i], 1);
-			ft_putchar_fd(text[guide.i], 1);
-			guide.i++;
-			guide.len++;
+			//write (1, text[guide->i], 1);
+			ft_putchar_fd(text[guide->i], 1);
+			guide->i++;
+			guide->len++;
 		}
 	}
+	ret = guide->len;
 	va_end(args);
-	return (guide.len);
+	free (guide);
+	return (ret);
 }
 
 static void init_false(t_guide *guide)
