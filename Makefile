@@ -29,10 +29,12 @@ all: $(NAME)
 
 $(NAME): $(SRC)
 	ar -rcs $@ $<
+	mv *.a $(SRC_PATH)
 
 $(SRC): $(FILES)
 	$(CC) $(CCFLAGS) -c $(FILES)
 	mv *.o $(SRC_PATH)
+
 
 bonus: all
 
