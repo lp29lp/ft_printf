@@ -30,7 +30,7 @@ all: $(NAME)
 $(NAME): $(SRC)
 	ar -rcs $@ $<
 
-$(SRC):
+$(SRC): $(FILES)
 	$(CC) $(CCFLAGS) -c $(FILES)
 
 bonus: all
