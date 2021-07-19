@@ -16,25 +16,22 @@ FILES = $(SRC_PATH)/ft_isdigit.c $(SRC_PATH)/ft_itoa.c\
 		$(SRC_PATH)/ft_strlen.c $(SRC_PATH)/print_char.c\
 		$(SRC_PATH)/print_diu.c $(SRC_PATH)/print_p.c\
 		$(SRC_PATH)/print_porcent.c $(SRC_PATH)/print_string.c\
-		$(SRC_PATH)/print_x.c $(SRC_PATH)/check_flags.c ft_printf.c
+		$(SRC_PATH)/print_x.c $(SRC_PATH)/check_flags.c $(SRC_PATH)/ft_printf.c
 
-SRC = $(FILES:.c=.o)
+SRC = $(patsubst %.c, %.o, $(FILES))
 
-NAME = ftprintf.a
-CC = gcc
+NAME = libftprintf.a
+CC = clang
 CCFLAGS = -Wall -Wextra -Werror
 RE = rm -f
 
 all: $(NAME)
 
 $(NAME): $(SRC)
-	ar -rcs $@ $<
-	mv *.a $(SRC_PATH)
+	ar -rcs $(NAME) $(src)
 
-$(SRC): $(FILES)
-	$(CC) $(CCFLAGS) -c $(FILES)
-	mv *.o $(SRC_PATH)
-
+$(SRC_PATH)/%.o: %.c
+	$(CC) $(CCFLAGS) -I . -c $< -o $@
 
 bonus: all
 
