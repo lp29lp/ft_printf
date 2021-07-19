@@ -72,8 +72,8 @@ static int check_sign(t_guide *guide, unsigned long int num)
 	//if (num < 0 && c == 'd' || c == 'i')
 	ft_putchar_fd('-', 1);
 	num *= -1;
-	return (num);
 	guide->len += 1;
+	return (num);
 
 	//?if (num < 0 && c == 'u')
 	//?	return (void);
