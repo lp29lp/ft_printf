@@ -37,8 +37,6 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 int		ft_isdigit(int c);
 size_t	ft_strlen(const char *s);
-
-
 int		ft_printf(const char *text, ...);
 void	check_flags(const char *text, va_list args, t_list guide);
 void	print_char(va_list arg, t_list guide);
