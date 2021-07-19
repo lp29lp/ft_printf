@@ -32,6 +32,7 @@ $(NAME): $(SRC)
 
 $(SRC): $(FILES)
 	$(CC) $(CCFLAGS) -c $(FILES)
+	mv *.o $(SRC_PATH)
 
 bonus: all
 
