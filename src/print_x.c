@@ -12,19 +12,18 @@
 
 #include "../ft_printf.h"
 
-static char	coprih(unsigned int num,char c);
-static void	flags_x(va_list args, t_guide *guide, unsigned int size);
+static void	coprih(unsigned int num,char c);
+static void	flags_x(t_guide *guide, int size);
 static int	check_size(unsigned int num);
 
 void	print_x(va_list args, t_guide *guide, char c)
 {
 	unsigned int num;
-	unsigned int size;
-	char conv;
+	int size;;
 
 	num = va_arg(args, unsigned int);
 	size = check_size(num);
-	flags_x(args, guide, size);
+	flags_x(guide, size);
 	if (guide->f_minus == 0)
 		while (guide->pspace-- > 0)
 			ft_putchar_fd(' ', 1);
@@ -39,7 +38,7 @@ void	print_x(va_list args, t_guide *guide, char c)
 	}
 }
 
-static char	coprih(unsigned int num,char c)
+static void	coprih(unsigned int num,char c)
 {
 	unsigned int base;
 	char *info_base;
@@ -61,7 +60,7 @@ static char	coprih(unsigned int num,char c)
 	}
 }
 
-static void	flags_x(va_list args, t_guide *guide, unsigned int size)
+static void	flags_x(t_guide *guide, int size)
 {
 	if (guide->precision > 1 && guide->width > 1)
 	{
@@ -73,7 +72,6 @@ static void	flags_x(va_list args, t_guide *guide, unsigned int size)
 		else if (guide->width < guide->precision && guide->precision > size)
 			guide->pzero = guide->precision - size;
 		guide->len += size + guide->pzero + guide->pspace;
-
 	}
 	if (guide->width > size && guide->f_zero == 1)
 		guide->pzero = guide->width - size;
@@ -86,7 +84,7 @@ static void	flags_x(va_list args, t_guide *guide, unsigned int size)
 
 static int	check_size(unsigned int num)
 {
-	unsigned int size;
+	int size;
 
 	size = 0;
 	if (num == 1)

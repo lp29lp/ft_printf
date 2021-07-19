@@ -37,11 +37,11 @@ void	ft_putstr_fd(char *s, int fd);
 int		ft_isdigit(int c);
 size_t	ft_strlen(const char *s);
 int		ft_printf(const char *text, ...);
-void	check_flags(const char *text, va_list args, t_guide *guide);
+void	check_flags(const char *text, t_guide *guide);
 void	print_char(va_list args, t_guide *guide);
-void	print_diu(va_list args, t_guide *guide, char c);
+void	print_diu(va_list args, t_guide *guide);
 void	print_p(va_list args, t_guide *guide);
-void	print_porcent(va_list args, t_guide *guide);
+void	print_porcent(t_guide *guide);
 void	print_string(va_list args, t_guide *guide);
 void	print_x(va_list args, t_guide *guide, char c);
 

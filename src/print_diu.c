@@ -12,17 +12,17 @@
 
 #include "../ft_printf.h"
 
-static void	flags_int(t_guide *guide, unsigned long int size);
-static int check_sign(t_guide *guide, unsigned long int num, char c);
+static void	flags_int(t_guide *guide, int size);
+static int check_sign(t_guide *guide, unsigned long int num);
 
-void	print_diu(va_list args, t_guide *guide, char c)
+void	print_diu(va_list args, t_guide *guide)
 {
 	unsigned long int num;
-	unsigned long int size;
+	int size;
 	char *src;
 
 	num = va_arg(args, int);
-	num = check_sign(guide, num, c);
+	num = check_sign(guide, num);
 	src = ft_itoa(num);
 	size = ft_strlen(src);
 	flags_int(guide, size);
@@ -44,7 +44,7 @@ void	print_diu(va_list args, t_guide *guide, char c)
 	}
 }
 
-static void	flags_int(t_guide *guide, unsigned long int size)
+static void	flags_int(t_guide *guide, int size)
 {
 	if (guide->precision > 1 && guide->width > 1)
 	{
@@ -66,7 +66,7 @@ static void	flags_int(t_guide *guide, unsigned long int size)
 	guide->len += size + guide->pzero + guide->pspace;
 }
 
-static int check_sign(t_guide *guide, unsigned long int num, char c)
+static int check_sign(t_guide *guide, unsigned long int num)
 {
 	//if (num < 0 && c == 'd' || c == 'i')
 	ft_putchar_fd('-', 1);

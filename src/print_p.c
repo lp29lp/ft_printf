@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-static char	coprih(unsigned int num);
+static void	coprih(unsigned int num);
 static int	flags_p(unsigned int num, t_guide *guide, int size);
 static int	check_size(unsigned int num);
 
@@ -54,7 +54,7 @@ static int	flags_p(unsigned int num, t_guide *guide, int size)
 }
 
 
-static char	coprih(unsigned int num)
+static void	coprih(unsigned int num)
 {
 	unsigned int base;
 	char *info_base;
