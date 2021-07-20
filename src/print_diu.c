@@ -13,7 +13,7 @@
 #include "../ft_printf.h"
 
 static void	flags_int(t_guide *guide, int size);
-static int check_sign(long num, t_guide *guide, const char *text);
+static int check_sign(long num, t_guide *guide, const char *text)
 
 void	print_diu(const char *text, va_list args, t_guide *guide)
 {
