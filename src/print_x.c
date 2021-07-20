@@ -89,12 +89,12 @@ static int	check_size(unsigned long int num, t_guide *guide)
 	size = 0;
 	if (num == 1)
 		return (1);
+	if (num == 0)
+		guide->len += 1;
 	while (num >= 1)
 	{
 		num/= 16;
 		size++;
 	}
-	if (num == 0)
-		guide->len += 1;
 	return (size);
 }
