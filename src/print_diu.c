@@ -70,13 +70,13 @@ static void	flags_int(t_guide *guide, int size)
 
 int check_sign(long num, t_guide *guide, const char *text)
 {
-	if ((num < 0 && text[guide->i] == 'd') || (text[guide->i] == 'i'))
+	if (text[guide->i] == 'd' || text[guide->i] == 'i')
 	{
 		ft_putchar_fd('-', 1);
 		guide->len += 1;
 		return (num * -1);
 	}
-	if (num < 0 && text[guide->i] == 'u')
+	if (text[guide->i] == 'u')
 		return (num * -1);
 	else
 		return (num);
