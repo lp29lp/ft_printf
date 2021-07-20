@@ -30,6 +30,7 @@ typedef struct s_guide
 	int	f_minus;
 	int	f_zero;
 	int	f_zerop;
+	int sign;
 }	t_guide;
 
 char	*ft_itoa(int n);

@@ -54,6 +54,8 @@ void	print_diu(const char *text, va_list args, t_guide *guide)
 	{
 		while (guide->pzero-- > 0)
 			ft_putchar_fd('0', 1);
+		if (guide->sign == 1)
+			ft_putchar_fd('-', 1);
 		while (size-- > 0)
 			write(1, &src[count++], 1);
 		if (guide->f_minus == 1)
@@ -90,7 +92,7 @@ static int check_sign(int num, t_guide *guide, const char *text)
 {
 	if (text[guide->i] == 'd' || text[guide->i] == 'i')
 	{
-		ft_putchar_fd('-', 1);
+		guide->sign = 1;
 		guide->len += 1;
 		return (num * -1);
 	}
