@@ -20,6 +20,8 @@ void	print_string(va_list args, t_guide *guide)
 	int		size;
 
 	src = va_arg(args, char*);
+	if (!src)
+		src = "(null)";
 	size = flags_string(ft_strlen(src), guide);
 	if (guide->f_minus == 0)
 		while (guide->pspace-- > 0)
