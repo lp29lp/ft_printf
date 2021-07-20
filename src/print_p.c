@@ -12,17 +12,17 @@
 
 #include "../ft_printf.h"
 
-static void	coprih(unsigned int num);
-static int	flags_p(unsigned int num, t_guide *guide, int size);
-static int	check_size(unsigned int num);
+static void	coprih(unsigned long int num);
+static int	flags_p(unsigned long int num, t_guide *guide, int size);
+static int	check_size(unsigned long int num);
 
 
 void	print_p(va_list args, t_guide *guide)
 {
-	unsigned int	num;
+	unsigned long int	num;
 	int					size;
 
-	num = va_arg(args, unsigned int);
+	num = va_arg(args, unsigned long int);
 	size = flags_p(num, guide, check_size(num));
 	if (!guide->f_minus)
 		while (guide->pspace-- > 0)
@@ -37,7 +37,7 @@ void	print_p(va_list args, t_guide *guide)
 			ft_putchar_fd(' ', 1);
 }
 
-static int	flags_p(unsigned int num, t_guide *guide, int size)
+static int	flags_p(unsigned long int num, t_guide *guide, int size)
 {
 	if (guide->precision > size)
 		guide->precision = guide->precision - size;
@@ -54,9 +54,9 @@ static int	flags_p(unsigned int num, t_guide *guide, int size)
 }
 
 
-static void	coprih(unsigned int num)
+static void	coprih(unsigned long int num)
 {
-	unsigned int base;
+	size_t base;
 	char *info_base;
 
 	base = 16;
@@ -66,9 +66,9 @@ static void	coprih(unsigned int num)
 	ft_putchar_fd(info_base[num % base], 1);
 }
 
-static int	check_size(unsigned int num)
+static int	check_size(unsigned long int num)
 {
-	unsigned int size;
+	unsigned long int size;
 
 	size = 0;
 	if (num == 1)
