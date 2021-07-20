@@ -12,16 +12,16 @@
 
 #include "../ft_printf.h"
 
-static void	coprih(unsigned long int num,const char *text, t_guide *guide);
+static void	coprih(unsigned int num,const char *text, t_guide *guide);
 static void	flags_x(t_guide *guide, int size);
-static int	check_size(unsigned long int num, t_guide *guide);
+static int	check_size(unsigned int num, t_guide *guide);
 
 void	print_x(va_list args, t_guide *guide, const char *text)
 {
-	unsigned long int num;
-	int size;;
+	unsigned int num;
+	int size;
 
-	num = va_arg(args, unsigned long int);
+	num = va_arg(args, unsigned int);
 	size = check_size(num, guide);
 	flags_x(guide, size);
 	if (guide->f_minus == 0)
@@ -38,9 +38,9 @@ void	print_x(va_list args, t_guide *guide, const char *text)
 	}
 }
 
-static void	coprih(unsigned long int num, const char *text, t_guide *guide)
+static void	coprih(unsigned int num, const char *text, t_guide *guide)
 {
-	unsigned long int base;
+	unsigned int base;
 	char *info_base;
 
 	base = 16;
@@ -82,7 +82,7 @@ static void	flags_x(t_guide *guide, int size)
 	guide->len += size + guide->pzero + guide->pspace;
 }
 
-static int	check_size(unsigned long int num, t_guide *guide)
+static int	check_size(unsigned int num, t_guide *guide)
 {
 	int size;
 
