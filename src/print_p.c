@@ -16,7 +16,6 @@ static void	coprih(unsigned long int num);
 static int	flags_p(unsigned long int num, t_guide *guide, int size);
 static int	check_size(unsigned long int num);
 
-
 void	print_p(va_list args, t_guide *guide)
 {
 	unsigned long int	num;
@@ -28,6 +27,8 @@ void	print_p(va_list args, t_guide *guide)
 		while (guide->pspace-- > 0)
 			ft_putchar_fd(' ', 1);
 	ft_putstr_fd("0x", 1);
+	if (num == 0)
+		ft_putchar_fd('0', 1);
 	while (guide->precision-- > 0)
 		ft_putchar_fd('0', 1);
 	if (size > 2)
