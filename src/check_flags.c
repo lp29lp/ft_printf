@@ -56,7 +56,7 @@ static int mini_atoi(const char *text, t_guide *guide)
 	conv = 0;
 	while (ft_isdigit(text[guide->i]) == 1)
 	{
-		conv *= 10 + (text[guide->i] - '0');
+		conv = conv * 10 + (text[guide->i] - '0');
 		guide->i++;
 	}
 	return(conv);
