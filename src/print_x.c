@@ -23,6 +23,8 @@ void	print_x(va_list args, t_guide *guide, const char *text)
 
 	num = va_arg(args, unsigned int);
 	size = check_size(num, guide);
+	if (size == 0)
+		guide->precision -= 1;
 	flags_x(guide, size);
 	if (guide->f_minus == 0)
 		while (guide->pspace-- > 0)
