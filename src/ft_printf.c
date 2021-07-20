@@ -57,7 +57,7 @@ static void init_false(t_guide *guide)
 	guide->f_minus = 0;
 	guide->f_zero = 0;
 	guide->f_zerop = 0;
-	guide->check_sign = 0;
+	guide->sign = 0;
 }
 
 static void init_true(const char *text, va_list args, t_guide *guide)
