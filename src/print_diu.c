@@ -31,7 +31,8 @@ void	print_diu(const char *text, va_list args, t_guide *guide)
 	if ((num < 0 && text[guide->i] == 'd') || (num < 0 && text[guide->i] == 'i'))
 	{
 		num = check_sign(num, guide, text);
-		guide->width -= 1;
+		if (guide->width > 0)
+			guide->width -= 1;
 	}
 	if (text[guide->i] == 'd' || text[guide->i] == 'i')
 		src = ft_itoa(num);
@@ -64,7 +65,7 @@ void	print_diu(const char *text, va_list args, t_guide *guide)
 
 static void	flags_int(t_guide *guide, int size)
 {
-	if (guide->precision > 1 && guide->width > 1)
+	if (guide->precision > 0 && guide->width > 0 || guide->precision > size)
 	{
 		if (guide->width > guide->precision && guide->precision > size)
 		{
@@ -73,12 +74,13 @@ static void	flags_int(t_guide *guide, int size)
 		}
 		else if (guide->width < guide->precision && guide->precision > size)
 			guide->pzero = guide->precision - size;
+		//if (guide->precision > 0)
+		//	guide->pspace = guide->precision - size;
 		guide->len += size + guide->pzero + guide->pspace;
+		return ;
 	}
 	if (guide->width > size && guide->f_zero == 1)
 		guide->pzero = guide->width - size;
-	else
-		guide->pzero = 0;
 	if (guide->width > size && guide->f_zero == 0)
 		guide->pspace = guide->width - size;
 	guide->len += size + guide->pzero + guide->pspace;
