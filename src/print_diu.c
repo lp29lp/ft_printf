@@ -19,7 +19,7 @@ void	print_diu(const char *text, va_list args, t_guide *guide)
 {
 	int num;
 	unsigned int unum;
-	int size;
+	int size = 0;;
 	char *src;
 	int count = 0;
 
@@ -34,7 +34,8 @@ void	print_diu(const char *text, va_list args, t_guide *guide)
 		src = ft_itoa(num);
 	if (text[guide->i] == 'u' && unum != 0)
 		src = ft_utoa(unum);
-	size = ft_strlen(src);
+	if (unum != 0 || num != 0)
+		size = ft_strlen(src);
 	if (size == 0)
 	{
 		ft_putchar_fd('0', 1);
