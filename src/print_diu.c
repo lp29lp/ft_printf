@@ -68,7 +68,7 @@ static void	flags_int(t_guide *guide, int size)
 	guide->len += size + guide->pzero + guide->pspace;
 }
 
-int check_sign(long num, t_guide *guide, const char *text)
+static int check_sign(long num, t_guide *guide, const char *text)
 {
 	if (text[guide->i] == 'd' || text[guide->i] == 'i')
 	{
