@@ -17,8 +17,8 @@ static int check_sign(int num, t_guide *guide, const char *text);
 
 void	print_diu(const char *text, va_list args, t_guide *guide)
 {
-	int num;
-	unsigned int unum;
+	int num = 0;
+	unsigned int unum = 0;
 	int size = 0;;
 	char *src;
 	int count = 0;
