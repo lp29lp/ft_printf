@@ -61,8 +61,6 @@ static void init_false(t_guide *guide)
 
 static void init_true(const char *text, va_list args, t_guide *guide)
 {
-	char c;
-
 	check_flags(text, guide);
 	if (text[guide->i] == 'c')
 		print_char(args, guide);
