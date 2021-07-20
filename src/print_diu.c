@@ -13,11 +13,11 @@
 #include "../ft_printf.h"
 
 static void	flags_int(t_guide *guide, int size);
-static int check_sign(long num, t_guide *guide, const char *text)
+static int check_sign(long long num, t_guide *guide, const char *text)
 
 void	print_diu(const char *text, va_list args, t_guide *guide)
 {
-	long num;
+	long long num;
 	int size;
 	char *src;
 	int count = 0;
@@ -68,7 +68,7 @@ static void	flags_int(t_guide *guide, int size)
 	guide->len += size + guide->pzero + guide->pspace;
 }
 
-static int check_sign(long num, t_guide *guide, const char *text)
+static int check_sign(long long num, t_guide *guide, const char *text)
 {
 	if (text[guide->i] == 'd' || text[guide->i] == 'i')
 	{
