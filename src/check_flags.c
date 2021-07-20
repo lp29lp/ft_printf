@@ -34,13 +34,13 @@ static void set_minus_zero(const char *text, t_guide *guide)
 {
 	while (text[guide->i] == '-' || text[guide->i] == '0')
 	{
-		if (text[guide->i == '-'])
+		if (text[guide->i] == '-')
 		{
 			guide->f_minus = 1;
 			guide->f_zero = 0;
 			guide->f_zerop = 0;
 		}
-		else if (text[guide->i == '0'] && guide->f_minus == 0)
+		else if (text[guide->i] == '0' && guide->f_minus == 0)
 		{
 			guide->f_zero = 1;
 			guide->f_zerop = 1;
@@ -54,7 +54,7 @@ static int mini_atoi(const char *text, t_guide *guide)
 	int conv;
 
 	conv = 0;
-	while (ft_isdigit(text[guide->i]) == 1)
+	while (ft_isdigit(text[guide->i]))
 	{
 		conv = conv * 10 + (text[guide->i] - '0');
 		guide->i++;
