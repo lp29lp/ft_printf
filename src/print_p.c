@@ -28,7 +28,10 @@ void	print_p(va_list args, t_guide *guide)
 			ft_putchar_fd(' ', 1);
 	ft_putstr_fd("0x", 1);
 	if (num == 0)
+	{
 		ft_putchar_fd('0', 1);
+		guide->len += 1;
+	}
 	while (guide->precision-- > 0)
 		ft_putchar_fd('0', 1);
 	if (size > 2)
