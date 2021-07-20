@@ -18,7 +18,7 @@ static int check_sign(int num, t_guide *guide, const char *text);
 void	print_diu(const char *text, va_list args, t_guide *guide)
 {
 	int num;
-	unsigned long int unum;
+	unsigned int unum;
 	int size;
 	char *src;
 	int count = 0;
@@ -27,7 +27,7 @@ void	print_diu(const char *text, va_list args, t_guide *guide)
 	if (text[guide->i] == 'd' || text[guide->i] == 'i')
 		num = va_arg(args, int);
 	else
-		unum = va_arg(args, unsigned long int);
+		unum = va_arg(args, unsigned int);
 	if ((num < 0 && text[guide->i] == 'd') || (num < 0 && text[guide->i] == 'i'))
 		num = check_sign(num, guide, text);
 	if (text[guide->i] == 'd' || text[guide->i] == 'i')
