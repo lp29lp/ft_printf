@@ -65,7 +65,7 @@ void	print_diu(const char *text, va_list args, t_guide *guide)
 
 static void	flags_int(t_guide *guide, int size)
 {
-	if (guide->precision > 0 && guide->width > 0 || guide->precision > size)
+	if ((guide->precision > 0 && guide->width > 0) || (guide->precision > size))
 	{
 		if (guide->width > guide->precision && guide->precision > size)
 		{
