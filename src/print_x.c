@@ -14,7 +14,7 @@
 
 static void	coprih(unsigned long int num,const char *text, t_guide *guide);
 static void	flags_x(t_guide *guide, int size);
-static int	check_size(unsigned long int num);
+static int	check_size(unsigned long int num, t_guide *guide);
 
 void	print_x(va_list args, t_guide *guide, const char *text)
 {
@@ -22,7 +22,7 @@ void	print_x(va_list args, t_guide *guide, const char *text)
 	int size;;
 
 	num = va_arg(args, unsigned long int);
-	size = check_size(num);
+	size = check_size(num, guide);
 	flags_x(guide, size);
 	if (guide->f_minus == 0)
 		while (guide->pspace-- > 0)
@@ -82,7 +82,7 @@ static void	flags_x(t_guide *guide, int size)
 	guide->len += size + guide->pzero + guide->pspace;
 }
 
-static int	check_size(unsigned long int num)
+static int	check_size(unsigned long int num, t_guide *guide)
 {
 	int size;
 
@@ -94,5 +94,7 @@ static int	check_size(unsigned long int num)
 		num/= 16;
 		size++;
 	}
+	if (num == 0)
+		guide->len += 1;
 	return (size);
 }
