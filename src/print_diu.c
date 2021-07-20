@@ -45,7 +45,6 @@ void	print_diu(const char *text, va_list args, t_guide *guide)
 		ft_putchar_fd('0', 1);
 		guide->len += 1;
 		guide->precision -= 1;
-		guide->width -= 1;
 	}
 	flags_int(guide, size);
 	if (guide->f_minus == 0)
@@ -66,12 +65,12 @@ void	print_diu(const char *text, va_list args, t_guide *guide)
 
 static void	flags_int(t_guide *guide, int size)
 {
-	if ((guide->precision > 0 && guide->width > 0) || (guide->precision > size))
+	if (guide->precision > 0 && guide->width > 0 || guide->precision > size)
 	{
 		if (guide->width > guide->precision && guide->precision > size)
 		{
 			guide->pzero = guide->precision - size;
-			guide->pspace = guide->width - guide->pzero;
+			guide->pspace = guide->width - guide->precision;
 		}
 		else if (guide->width < guide->precision && guide->precision > size)
 			guide->pzero = guide->precision - size;
