@@ -69,15 +69,9 @@ static void init_true(const char *text, va_list args, t_guide *guide)
 	else if (text[guide->i] == 's')
 		print_string(args, guide);
 	else if (text[guide->i] == 'd' || text[guide->i] == 'i' || text[guide->i] == 'u')
-	{
-		c = guide->i;
 		print_diu(text, args, guide);
-	}
 	else if (text[guide->i] == 'x' || text[guide->i] == 'X')
-	{
-		c = guide->i;
-		print_x(args, guide, c);
-	}
+		print_x(args, guide, text);
 	else if (text[guide->i] == 'p')
 		print_p(args, guide);
 	else

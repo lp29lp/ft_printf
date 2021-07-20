@@ -44,7 +44,7 @@ void	print_diu(const char *text, va_list args, t_guide *guide);
 void	print_p(va_list args, t_guide *guide);
 void	print_porcent(t_guide *guide);
 void	print_string(va_list args, t_guide *guide);
-void	print_x(va_list args, t_guide *guide, char c);
+void	print_x(va_list args, t_guide *guide, const char *text);
 char	*ft_utoa(unsigned int n);
 
 #endif

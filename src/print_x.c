@@ -12,16 +12,16 @@
 
 #include "../ft_printf.h"
 
-static void	coprih(unsigned int num,char c);
+static void	coprih(unsigned long int num,const char *text, t_guide *guide);
 static void	flags_x(t_guide *guide, int size);
-static int	check_size(unsigned int num);
+static int	check_size(unsigned long int num);
 
-void	print_x(va_list args, t_guide *guide, char c)
+void	print_x(va_list args, t_guide *guide, const char *text)
 {
-	unsigned int num;
+	unsigned long int num;
 	int size;;
 
-	num = va_arg(args, unsigned int);
+	num = va_arg(args, unsigned long int);
 	size = check_size(num);
 	flags_x(guide, size);
 	if (guide->f_minus == 0)
@@ -31,31 +31,31 @@ void	print_x(va_list args, t_guide *guide, char c)
 	{
 		while (guide->pzero-- > 0)
 			ft_putchar_fd('0', 1);
-		coprih(num, c);
+		coprih(num, text, guide);
 		if (guide->f_minus == 1)
 			while (guide->pspace-- > 0)
 				ft_putchar_fd(' ', 1);
 	}
 }
 
-static void	coprih(unsigned int num,char c)
+static void	coprih(unsigned long int num, const char *text, t_guide *guide)
 {
-	unsigned int base;
+	unsigned long int base;
 	char *info_base;
 
 	base = 16;
-	if (c == 'x')
+	if (text[guide->i] == 'x')
 	{
 		info_base = "0123456789abcdef";
 		if (num / base > 0)
-			coprih(num / base, c);
+			coprih(num / base, text, guide);
 		ft_putchar_fd(info_base[num % base], 1);
 	}
 	else
 	{
 		info_base = "0123456789ABCDEF";
-		if (num /= base > 0)
-			coprih(num / base, c);
+		if (num / base > 0)
+			coprih(num / base, text, guide);
 		ft_putchar_fd(info_base[num % base], 1);
 	}
 }
@@ -82,7 +82,7 @@ static void	flags_x(t_guide *guide, int size)
 	guide->len += size + guide->pzero + guide->pspace;
 }
 
-static int	check_size(unsigned int num)
+static int	check_size(unsigned long int num)
 {
 	int size;
 
