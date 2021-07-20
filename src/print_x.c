@@ -62,7 +62,7 @@ static void	coprih(unsigned int num, const char *text, t_guide *guide)
 
 static void	flags_x(t_guide *guide, int size)
 {
-	if (guide->precision > 1 && guide->width > 1)
+	if ((guide->precision > 1 && guide->width > 1) || (guide->precision >size))
 	{
 		if (guide->width > guide->precision && guide->precision > size)
 		{
@@ -72,11 +72,10 @@ static void	flags_x(t_guide *guide, int size)
 		else if (guide->width < guide->precision && guide->precision > size)
 			guide->pzero = guide->precision - size;
 		guide->len += size + guide->pzero + guide->pspace;
+		return ;
 	}
 	if (guide->width > size && guide->f_zero == 1)
 		guide->pzero = guide->width - size;
-	else
-		guide->pzero = 0;
 	if (guide->width > size && guide->f_zero == 0)
 		guide->pspace = guide->width - size;
 	guide->len += size + guide->pzero + guide->pspace;
