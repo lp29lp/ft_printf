@@ -12,12 +12,13 @@
 
 #include "../ft_printf.h"
 
-static void	flags_int(t_guide *guide, int size);
+static void	flags_int(t_guide *guide, int size, int num);
 static int check_sign(int num, t_guide *guide, const char *text);
 
 void	print_diu(const char *text, va_list args, t_guide *guide)
 {
 	int num;
+	int cpy;
 	unsigned int unum;
 	int size = 0;;
 	char *src;
@@ -29,7 +30,10 @@ void	print_diu(const char *text, va_list args, t_guide *guide)
 	else
 		unum = va_arg(args, unsigned int);
 	if ((num < 0 && text[guide->i] == 'd') || (num < 0 && text[guide->i] == 'i'))
+	{
 		num = check_sign(num, guide, text);
+		cpy = 0;
+	}
 	if (text[guide->i] == 'd' || text[guide->i] == 'i')
 		src = ft_itoa(num);
 	if (text[guide->i] == 'u' && unum != 0)
@@ -41,7 +45,7 @@ void	print_diu(const char *text, va_list args, t_guide *guide)
 		ft_putchar_fd('0', 1);
 		guide->len += 1;
 	}
-	flags_int(guide, size);
+	flags_int(guide, size, cpy);
 	if (guide->f_minus == 0)
 		while (guide->pspace-- > 0)
 			ft_putchar_fd(' ', 1);
@@ -58,7 +62,7 @@ void	print_diu(const char *text, va_list args, t_guide *guide)
 	free (src);
 }
 
-static void	flags_int(t_guide *guide, int size)
+static void	flags_int(t_guide *guide, int size, int num)
 {
 	if (guide->precision > 1 && guide->width > 1)
 	{
@@ -75,8 +79,8 @@ static void	flags_int(t_guide *guide, int size)
 		guide->pzero = guide->width - size;
 	else
 		guide->pzero = 0;
-	//if (guide->width > size && guide->f_zero == 0)
-	//	guide->pspace = guide->width - size;
+	if (guide->width > size && guide->f_zero == 0 && num != 0)
+		guide->pspace = guide->width - size;
 	guide->len += size + guide->pzero + guide->pspace;
 }
 
