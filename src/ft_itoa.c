@@ -6,11 +6,11 @@
 /*   By: lpaulo-d <lpaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 19:33:19 by lpaulo-d          #+#    #+#             */
-/*   Updated: 2021/07/19 21:11:30 by lpaulo-d         ###   ########.fr       */
+/*   Updated: 2021/07/19 21:54:20 by lpaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 char	*ft_itoa(int n)
 {

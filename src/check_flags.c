@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 static void set_minus_zero(const char *text, t_guide *guide);
 static int mini_atoi(const char *text, t_guide *guide);

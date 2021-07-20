@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 static void	flags_int(t_guide *guide, int size);
 static int check_sign(const char *text, t_guide *guide, int num);
