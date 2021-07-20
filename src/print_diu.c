@@ -10,20 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 static void	flags_int(t_guide *guide, int size);
-static int check_sign(t_guide *guide, unsigned long int num);
+static int check_sign(const char *text, t_guide *guide, int num);
 
-void	print_diu(va_list args, t_guide *guide)
+void	print_diu(const char *text, va_list args, t_guide *guide)
 {
-	unsigned long int num;
+	int num;
 	int size;
 	char *src;
 	int count = 0;
 
 	num = va_arg(args, int);
-	num = check_sign(guide, num);
+	num = check_sign(text, guide, num);
 	src = ft_itoa(num);
 	if (src == NULL)
 		return ;
@@ -67,18 +67,20 @@ static void	flags_int(t_guide *guide, int size)
 	guide->len += size + guide->pzero + guide->pspace;
 }
 
-static int check_sign(t_guide *guide, unsigned long int num)
+static int check_sign(const char *text, t_guide *guide, int num)
 {
-	if (num < 0 && guide->i == 'd' || num < 0 && guide->i == 'i')
+	if ((num < 0 && text[guide->i] == 'd') || (num < 0 && text[guide->i] == 'i'))
 	{
 		ft_putchar_fd('-', 1);
 		num *= -1;
 		guide->len += 1;
 		return (num);
 	}
-	else
+	else if (num < 0)
 	{
 		num *= -1;
 		return (num);
 	}
+	else
+		return (num);
 }
