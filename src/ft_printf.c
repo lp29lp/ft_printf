@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 static void init_true(const char *text, va_list args, t_guide *guide);
 static void init_false(t_guide *guide);

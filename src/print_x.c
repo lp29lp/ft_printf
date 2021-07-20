@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 static void	coprih(unsigned int num,char c);
 static void	flags_x(t_guide *guide, int size);

@@ -16,7 +16,8 @@ FILES = $(SRC_PATH)/ft_isdigit.c $(SRC_PATH)/ft_itoa.c\
 		$(SRC_PATH)/ft_strlen.c $(SRC_PATH)/print_char.c\
 		$(SRC_PATH)/print_diu.c $(SRC_PATH)/print_p.c\
 		$(SRC_PATH)/print_porcent.c $(SRC_PATH)/print_string.c\
-		$(SRC_PATH)/print_x.c $(SRC_PATH)/check_flags.c $(SRC_PATH)/ft_printf.c
+		$(SRC_PATH)/print_x.c $(SRC_PATH)/check_flags.c $(SRC_PATH)/ft_printf.c\
+		$(SRC_PATH)/ft_utoa.c
 
 SRC = $(patsubst %.c, %.o, $(FILES))
 
