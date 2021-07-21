@@ -10,13 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../libftprintf.h"
 
-void print_char(va_list args, t_guide *guide)
+void	print_char(va_list args, t_guide *guide)
 {
-	char c;
+	char	c;
+
 	c = va_arg(args, int);
-	if(guide->width > 1 && guide->f_zero == 1)
+	if (guide->width > 1 && guide->f_zero == 1)
 		guide->pzero = guide->width - 1;
 	else
 		guide->pzero = 0;

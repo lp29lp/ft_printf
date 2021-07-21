@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../libftprintf.h"
 
-static void set_minus_zero(const char *text, t_guide *guide);
-static int mini_atoi(const char *text, t_guide *guide);
+static void	set_minus_zero(const char *text, t_guide *guide);
+static int	mini_atoi(const char *text, t_guide *guide);
 
-void check_flags(const char *text, t_guide *guide)
+void	check_flags(const char *text, t_guide *guide)
 {
 	if (text[guide->i] == '-' || text[guide->i] == '0')
 		set_minus_zero(text, guide);
@@ -24,13 +24,13 @@ void check_flags(const char *text, t_guide *guide)
 	{
 		guide->dot = 1;
 		guide->i++;
-		if(ft_isdigit(text[guide->i]) == 1)
+		if (ft_isdigit(text[guide->i]) == 1)
 			guide->f_zero = 0;
 		guide->precision = mini_atoi(text, guide);
 	}
 }
 
-static void set_minus_zero(const char *text, t_guide *guide)
+static void	set_minus_zero(const char *text, t_guide *guide)
 {
 	while (text[guide->i] == '-' || text[guide->i] == '0')
 	{
@@ -49,9 +49,9 @@ static void set_minus_zero(const char *text, t_guide *guide)
 	}
 }
 
-static int mini_atoi(const char *text, t_guide *guide)
+static int	mini_atoi(const char *text, t_guide *guide)
 {
-	int conv;
+	int	conv;
 
 	conv = 0;
 	while (ft_isdigit(text[guide->i]))
@@ -59,5 +59,5 @@ static int mini_atoi(const char *text, t_guide *guide)
 		conv = conv * 10 + (text[guide->i] - '0');
 		guide->i++;
 	}
-	return(conv);
+	return (conv);
 }

@@ -6,11 +6,11 @@
 /*   By: lpaulo-d <lpaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 19:33:19 by lpaulo-d          #+#    #+#             */
-/*   Updated: 2021/07/20 02:10:34 by lpaulo-d         ###   ########.fr       */
+/*   Updated: 2021/07/21 00:44:04 by lpaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../libftprintf.h"
 
 static int	n_len(long n)
 {

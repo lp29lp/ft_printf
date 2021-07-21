@@ -10,16 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../libftprintf.h"
 
-static int flags_string(int size, t_guide *guide);
+static int	flags_string(int size, t_guide *guide);
 
 void	print_string(va_list args, t_guide *guide)
 {
 	char	*src;
 	int		size;
 
-	src = va_arg(args, char*);
+	src = va_arg(args, char *);
 	if (!src)
 		src = "(null)";
 	size = flags_string(ft_strlen(src), guide);
@@ -39,7 +39,7 @@ void	print_string(va_list args, t_guide *guide)
 			ft_putchar_fd(' ', 1);
 }
 
-static int flags_string(int size, t_guide *guide)
+static int	flags_string(int size, t_guide *guide)
 {
 	if (guide->precision > 0 && guide->precision < size)
 		size = guide->precision;
@@ -51,6 +51,6 @@ static int flags_string(int size, t_guide *guide)
 		guide->pzero = 0;
 	if (guide->width > size && guide->f_zero == 0)
 		guide->pspace = guide->width - size;
-	guide->len += size + guide->pzero + guide->pspace; 
+	guide->len += size + guide->pzero + guide->pspace;
 	return (size);
 }

@@ -6,11 +6,11 @@
 /*   By: lpaulo-d <lpaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 18:33:40 by lpaulo-d          #+#    #+#             */
-/*   Updated: 2021/07/20 02:10:30 by lpaulo-d         ###   ########.fr       */
+/*   Updated: 2021/07/20 23:46:54 by lpaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../libftprintf.h"
 
 void	ft_putchar_fd(char c, int fd)
 {

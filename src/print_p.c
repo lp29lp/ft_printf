@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../libftprintf.h"
 
 static void	coprih(unsigned long int num);
 static int	flags_p(unsigned long int num, t_guide *guide, int size);
@@ -62,11 +62,10 @@ static int	flags_p(unsigned long int num, t_guide *guide, int size)
 	return (size);
 }
 
-
 static void	coprih(unsigned long int num)
 {
-	size_t base;
-	char *info_base;
+	size_t	base;
+	char	*info_base;
 
 	base = 16;
 	info_base = "0123456789abcdef";
@@ -77,14 +76,14 @@ static void	coprih(unsigned long int num)
 
 static int	check_size(unsigned long int num)
 {
-	unsigned long int size;
+	unsigned long int	size;
 
 	size = 0;
 	if (num == 1)
 		return (1);
 	while (num >= 1)
 	{
-		num/= 16;
+		num /= 16;
 		size++;
 	}
 	return (size);
