@@ -31,7 +31,7 @@ all: $(NAME)
 $(NAME): $(SRC)
 	ar -rcs $(NAME) $(SRC)
 
-$(SRC_PATH)/%.o: %.c
+%.o: %.c
 	$(CC) $(CCFLAGS) -I . -c $< -o $@
 
 bonus: all
