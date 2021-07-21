@@ -6,11 +6,11 @@
 /*   By: lpaulo-d <lpaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 02:10:18 by lpaulo-d          #+#    #+#             */
-/*   Updated: 2021/07/20 23:51:37 by lpaulo-d         ###   ########.fr       */
+/*   Updated: 2021/07/21 12:55:23 by lpaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf.h"
+#include "../ft_printf.h"
 
 static int	ft_nbsize(long n)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf.h"
+#include "../ft_printf.h"
 
 static void	ct_fx(t_guide *guide, int size);
 static void	flags_x(t_guide *guide, int size);

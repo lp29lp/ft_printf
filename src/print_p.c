@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf.h"
+#include "../ft_printf.h"
 
 static void	coprih(unsigned long int num);
 static int	flags_p(unsigned long int num, t_guide *guide, int size);
