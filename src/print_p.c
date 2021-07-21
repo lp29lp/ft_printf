@@ -22,6 +22,12 @@ void	print_p(va_list args, t_guide *guide)
 	int					size;
 
 	num = va_arg(args, unsigned long int);
+	if (guide->dot == 1 && guide->precision == 0 && num == 0)
+	{
+		ft_putstr_fd("(NULL)", 1);
+		guide->len += 6;
+		return ;
+	}
 	size = flags_p(num, guide, check_size(num));
 	if (!guide->f_minus)
 		while (guide->pspace-- > 0)
@@ -45,8 +51,6 @@ static int	flags_p(unsigned long int num, t_guide *guide, int size)
 {
 	if (guide->precision > size)
 		guide->precision = guide->precision - size;
-	else
-		guide->precision = 0;
 	if (!num && !guide->dot && !guide->precision)
 		size = 2;
 	else
