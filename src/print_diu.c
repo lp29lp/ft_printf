@@ -53,10 +53,10 @@ void	print_diu(const char *text, va_list args, t_guide *guide)
 			ft_putchar_fd(' ', 1);
 	if ((guide->f_zero == 1) || (!guide->f_zero) || (guide->precision > size))
 	{
-		while (guide->pzero-- > 0)
-			ft_putchar_fd('0', 1);
 		if (guide->sign == 1)
 			ft_putchar_fd('-', 1);
+		while (guide->pzero-- > 0)
+			ft_putchar_fd('0', 1);
 		while (size-- > 0)
 			write(1, &src[count++], 1);
 		if (guide->f_minus == 1)
