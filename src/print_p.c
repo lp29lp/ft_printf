@@ -47,12 +47,17 @@ static int	flags_p(unsigned long int num, t_guide *guide, int size)
 		guide->precision = guide->precision - size;
 	else
 		guide->precision = 0;
-	if (!num && guide->dot && !guide->precision)
+	if (!num && !guide->dot && !guide->precision)
 		size = 2;
 	else
 		size += 2;
 	if (guide->width > size)
-		guide->pspace = guide->width - size;
+	{
+		if (size > 2)
+			guide->pspace = guide->width - size ;
+		else
+			guide->pspace = guide->width - size - 1;
+	}
 	guide->len += guide->pspace + size + guide->precision;
 	return (size);
 }
