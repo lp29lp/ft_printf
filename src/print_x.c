@@ -90,6 +90,11 @@ static void	ct_fx(t_guide *guide, int size)
 	if (guide->width == guide->precision && guide->width > 0
 		&& guide->precision > 0)
 	{
+		guide->len += 1;
+	}
+	if (guide->width == guide->precision && guide->width > 0
+		&& guide->precision > 0)
+	{
 		guide->pzero = guide->width - size;
 		guide->len += guide->pzero;
 		return ;
