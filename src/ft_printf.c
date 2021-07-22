@@ -83,9 +83,12 @@ static void	init_true(const char *text, va_list args, t_guide *guide)
 		print_x(args, guide, text);
 	else if (text[guide->i] == 'p')
 		print_p(args, guide);
+	else if (text[guide->i] == '%')
+		print_porcent(guide);
 	else
 	{
 		ft_putchar_fd('%', 1);
+		guide->i--;
 		guide->len++;
 	}
 	guide->i++;
