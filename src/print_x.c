@@ -24,7 +24,7 @@ void	print_x(va_list args, t_guide *guide, const char *text)
 
 	num = va_arg(args, unsigned int);
 	size = check_size(num);
-	if (size == 0 && guide->dot == 0)
+	if (size == 0 && guide->dot == 0 && guide->width == 0)
 	{
 		ft_putchar_fd('0', 1);
 		guide->len += 1;
@@ -44,7 +44,7 @@ static void	ct_px(t_guide *guide, const char *text, int size, unsigned int num)
 	{
 		while (guide->pzero-- > 0)
 			ft_putchar_fd('0', 1);
-		if (size > 0)
+		if (size >= 0)
 			coprihx(num, text, guide);
 		if (guide->f_minus == 1)
 			while (guide->pspace-- > 0)
@@ -66,7 +66,14 @@ static void	flags_x(t_guide *guide, int size)
 		guide->len += size + guide->pzero + guide->pspace;
 		return ;
 	}
-	if (guide->width > size && size == 0 && guide->precision == 0)
+	if (guide->width > size && size == 0 && guide->dot == 0)
+	{
+		guide->pspace = guide->width - 1;
+		guide->len += guide->pspace + 1;
+		return ;
+	}
+	if (guide->width > size && size == 0 && guide->precision == 0
+		&& guide->dot == 1)
 	{
 		guide->pspace = guide->width - size;
 		guide->len += guide->pspace;
