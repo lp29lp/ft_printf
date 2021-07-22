@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC_PATH = src
+SRC_PATH = ./src
 FILES = $(SRC_PATH)/ft_isdigit.c $(SRC_PATH)/ft_itoa.c\
 		$(SRC_PATH)/ft_putchar_fd.c $(SRC_PATH)/ft_putstr_fd.c\
 		$(SRC_PATH)/ft_strlen.c $(SRC_PATH)/print_char.c\
@@ -19,12 +19,12 @@ FILES = $(SRC_PATH)/ft_isdigit.c $(SRC_PATH)/ft_itoa.c\
 		$(SRC_PATH)/print_x.c $(SRC_PATH)/check_flags.c $(SRC_PATH)/ft_printf.c\
 		$(SRC_PATH)/ft_utoa.c $(SRC_PATH)/coprihx.c
 
-SRC = $(patsubst %.c, %.o, $(FILES))
+SRC = $(FILES:.c=.o)
 
 NAME = libftprintf.a
-CC = clang
-CCFLAGS = -Wall -Wextra -Werror
-RE = rm -f
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+RM = rm -f
 
 all: $(NAME)
 
@@ -32,7 +32,7 @@ $(NAME): $(SRC)
 	ar -rcs $(NAME) $(SRC)
 
 %.o: %.c
-	$(CC) $(CCFLAGS) -I . -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 bonus: all
 
